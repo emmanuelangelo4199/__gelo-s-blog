@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.contrib import admin
+
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello, welcome to Angelo's News Blog!")
+    return render(request, "index.html", {
+        
+    })

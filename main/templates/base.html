@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gelo's News Blog</title>
+        <link rel="Stylesheet" href={%static 'Styles/style.css'%}>
+        
+    </head>
+    <body>
+        <header>
+            <div class="header-logo">
+                <a href="/">
+                    <h1>Gelo's Blog</h1>
+                </a>
+            </div>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+
+                <ul class="nav-signup">
+                    <li><a href="{% url 'about' %}"><i class="fa-solid fa-user-plus"></i></a></li>
+                    <li><a href="{% url 'contact' %}"><i class="fa-solid fa-circle-user"></i></a></li>
+                </ul>
+            </nav>
+
+
