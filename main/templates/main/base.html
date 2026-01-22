@@ -6,7 +6,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gelo's News Blog</title>
-        <link rel="Stylesheet" href={%static 'Styles/style.css'%}>
+        <link rel="Stylesheet" href={% static 'Styles/style.css' %}>
+        
+        {% comment %} Icons links {% endcomment %}
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     </head>
@@ -24,21 +26,32 @@
                         <a href="/"><i class="fi fi-rr-home"></i>Home</a>
                     </li>
                     <li>
-                        <a href="{% url 'about' %}"><i class="fi fi-br-info"></i>About</a>
+                        <a href="#"><i class="fi fi-br-info"></i>About</a>
                     </li>
                     <li>
-                        <a href="{% url 'contact' %}"><i class="fi fi-rc-phone-plus"></i>Contact</a>
+                        <a href="#"><i class="fi fi-rc-phone-plus"></i>Contact</a>
                     </li>
                 </ul>
 
                 <ul class="nav-signup">
                     <li>
-                        <a href="{% url 'about' %}"><i class="fi fi-rr-user"></i></a>
+                        <a href="#"><i class="fi fi-rr-user"></i></a>
                     </li>
                     <li>
-                        <a href="{% url 'contact' %}"><i class="fa-solid fa-circle-user"></i></a>
+                        <a href="#"><i class="fa-solid fa-circle-user"></i></a>
                     </li>
                 </ul>
             </nav>
 
+            <main>
+                {%block content%}
 
+                {% endblock %}
+            </main>
+
+        </header>
+
+
+        <script rel="script" src="#"></script>
+    </body>
+    </html>
