@@ -31,14 +31,14 @@
             </div>
             
             <ul class="nav-links">
-                <li><a href="/"><i class="fi fi-rr-home"></i> Home</a></li>
-                <li><a href="#"><i class="fi fi-bs-info"></i> About</a></li>
-                <li><a href="#"><i class="fi fi-rr-customer-service"></i> Contact</a></li>
+                <li><a href="{% url 'index' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home"></i> Home</a></li>
+                <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog'%}active{% endif %}"><i class="fi fi-bs-info"></i> My Blog</a></li>
+                <li><a href="#" class="{% if request.path == '#'%}active{% endif %}"><i class="fi fi-rr-customer-service"></i> Contact</a></li>
             </ul>
 
             <div class="nav-signup">
-                    <a href="#"><i class="fi fi-sr-entrance"></i> Login</a>
-                    <a href="#"> <i class="fi fi-rr-sign-up"></i> Sign-Up</a>
+                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"><i class="fi fi-sr-entrance"></i> Login</a>
+                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"> <i class="fi fi-rr-sign-up"></i> Sign-Up</a>
             </div>
         </nav>
 
