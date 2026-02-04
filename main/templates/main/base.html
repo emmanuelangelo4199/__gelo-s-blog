@@ -6,52 +6,49 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gelo's News Blog</title>
-        <link rel="Stylesheet" href={% static 'Styles/style.css' %}>
+        <link rel="stylesheet" href={% static 'Styles/style.css' %}>
+        {% comment %} Favicon {% endcomment %}
+        <link rel="icon" href={% static 'img/logo.JPG'%} type="icon-image"> 
         
         {% comment %} Icons links {% endcomment %}
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-straight/css/uicons-bold-straight.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/3.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+
+        {% comment %} Google font {% endcomment %}
+         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <nav class="navbar">
             <div class="header-logo">
                 <a href="/">
                     <h1>Gelo's Blog</h1>
+                    <img src="{% static "img/logo.JPG" %}">
                 </a>
             </div>
+            
+            <ul class="nav-links">
+                <li><a href="/"><i class="fi fi-rr-home"></i> Home</a></li>
+                <li><a href="#"><i class="fi fi-bs-info"></i> About</a></li>
+                <li><a href="#"><i class="fi fi-rr-customer-service"></i> Contact</a></li>
+            </ul>
 
-            <nav>
-                <ul class="nav-links">
-                    <li>
-                        <a href="/"><i class="fi fi-rr-home"></i>Home</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fi fi-br-info"></i>About</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fi fi-rc-phone-plus"></i>Contact</a>
-                    </li>
-                </ul>
+            <div class="nav-signup">
+                    <a href="#"><i class="fi fi-sr-entrance"></i> Login</a>
+                    <a href="#"> <i class="fi fi-rr-sign-up"></i> Sign-Up</a>
+            </div>
+        </nav>
 
-                <ul class="nav-signup">
-                    <li>
-                        <a href="#"><i class="fi fi-rr-user"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa-solid fa-circle-user"></i></a>
-                    </li>
-                </ul>
-            </nav>
+        <main>
+            {%block content%}
 
-            <main>
-                {%block content%}
-
-                {% endblock %}
-            </main>
-
-        </header>
+            {% endblock %}
+        </main>
 
 
         <script rel="script" src="#"></script>
     </body>
-    </html>
+</html>

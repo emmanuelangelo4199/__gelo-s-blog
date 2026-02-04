@@ -1,5 +1,95 @@
+@import url('https://cdn-uicons.flaticon.com/3.0.0/uicons-bold-straight/css/uicons-bold-straight.css');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+:root{
+    --body-color: #659157;
+    --text-white: white;
+    --border-btm: rgba(255, 255, 255, 0.05);
+    --bg-nav: #A1C084; 
+    --clr1: #ECF39E;
+    --clr2: #90A955;
+    --clr3: #4F772D;
+    --clr4: #31572C;
+    --clr5: #132A13;
+}
+
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background: var(--body-color);
+    color: var(--text-white);
+}
+
+.navbar{
+    position: sticky;
+    width: 100%;
+    max-width: 1400px;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-btm);
+    backdrop-filter: blur(15px);
+    background: var(--bg-nav);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.header-logo{
+    margin: 3px;
+    margin-right: auto;
+}
+
+.header-logo img{
+    width: 90px;
+    border-radius: 55%;
+}
+
+.header-logo a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.header-logo a h1{
+    line-height: 2;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar .nav-links{
+    width: fit-content;
+    margin: 30px;
+    padding: 10px;
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    background-color: var(--clr1);
+    border-radius: 9px;
+}
+
+.navbar .nav-links li a{
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase !important;
+    font-weight: 500;
+}
+
+.navbar .nav-signup{
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .nav-signup a{
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
