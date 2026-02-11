@@ -4,6 +4,8 @@ from django.contrib import admin
 from .forms import *
 from .models import *
 
+from django.views.decorators.csrf import csrf_protect
+
 # Create your views here.
 
 def index(request):
@@ -15,6 +17,7 @@ def blogPost(request):
     context = {}
     return render(request, 'main/blog.html', context)
 
+@csrf_protect
 def create_P(request):
     form = BlogForm()
     

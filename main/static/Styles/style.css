@@ -16,7 +16,7 @@
     --clr5: #132A13;
 }
 
-body{
+body.bg{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background: var(--body-color);
     color: var(--text-white);
@@ -25,7 +25,7 @@ body{
 .navbar{
     position: sticky;
     width: 100%;
-    max-width: 1400px;
+    height: 100px;
     margin-bottom: 2rem;
     border-bottom: 1px solid var(--border-btm);
     backdrop-filter: blur(15px);
@@ -42,12 +42,12 @@ body{
 }
 
 .header-logo img{
-    width: 90px;
-    border-radius: 55%;
+    width: 70px;
+    border-radius: 80%;
 }
 
-.header-logo a{
-    text-decoration: none;
+.header-logo a.h-link{
+    text-decoration: none !important;
     display: flex;
     align-items: center;
     gap: 3px;
@@ -123,7 +123,7 @@ body{
 
 .container{
     width: 90%;
-    box-shadow: 0 4px 16px rgba(255, 254, 254, 0.09);
+    box-shadow: 0 4px 16px rgba(255, 254, 254, 0.10);
     justify-content: center;
     padding: 32px;
     border-radius: 5px;

@@ -28,8 +28,9 @@ class BlogForm(forms.ModelForm):
     
     description = forms.CharField(
     label= "Description",
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Description/ Bio...'
+    widget=forms.Textarea(attrs={
+        'placeholder': 'Description/ Bio...',
+        'rows': 5
     })
     )
     
