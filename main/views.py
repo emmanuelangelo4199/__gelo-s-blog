@@ -9,8 +9,13 @@ from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 def index(request):
-    title = "this is my title"
-    context = {'title': title}
+    # fetches all the rows from the BlogPost models 
+    blogsP = AboutUs.objects.all()
+    
+    
+    context = {
+        'blogsP': blogsP
+    }
     return render(request, 'main/index.html', context)
 
 def blogPost(request):
