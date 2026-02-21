@@ -5,28 +5,21 @@
 
 {%block content%}
 
-{% for blog  in blogsP reversed %}
+
 
 <div class="">
-    <div class="">
-        {{blog.title}}
-    </div>
+    {% for blog  in blogsP reversed %}
+    <p class=""> {{blog.title}}</p>
 
-    <div class="">
-        {{blog.mission}}
-    </div>
+    <p class=""> {{blog.mission}}</p>
 
-    <div class="">
-        {{blog.vision}}
-    </div>
+    <p class=""> {{blog.vision}}</p>
 
-    <div class="">
-        {{blog.description}}
-    </div>
+    <p class=""> {{blog.description}} </p>
+
+    {% endfor %}
     
 </div>
 
-
-{% endfor %}
 
 {% endblock %}
