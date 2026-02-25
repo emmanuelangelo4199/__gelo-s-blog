@@ -39,7 +39,7 @@ def create_P(request):
                 category = category,
             )
             blog.save()
-            return redirect('blog')
+            return redirect('index')
     
     context = {'form': form}
     return render(request, 'posts/create.html', context)
