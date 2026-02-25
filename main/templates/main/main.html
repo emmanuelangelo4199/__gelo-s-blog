@@ -37,8 +37,8 @@
             </div>
             
             <ul class="nav-links">
-                <li><a href="{% url 'index' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home"></i> Home</a></li>
-                <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog'%}active{% endif %}"><i class="fi fi-bs-info"></i> My Blog</a></li>
+                <li><a href="{% url 'main' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home"></i> Home</a></li>
+                <li><a href="{% url 'index' %}" class="{% if request.path == '/index'%}active{% endif %}"><i class="fi fi-bs-info"></i>Post</a></li>
                 <li><a href="#" class="{% if request.path == '#'%}active{% endif %}"><i class="fi fi-rr-customer-service"></i> Contact</a></li>
             </ul>
 

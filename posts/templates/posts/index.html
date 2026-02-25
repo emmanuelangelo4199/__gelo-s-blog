@@ -1,0 +1,25 @@
+{% extends "posts/base.html" %}
+
+{% load static %}
+
+
+{% block content%}
+
+
+
+<div class="">
+    {% for blog  in blogsP reversed %}
+    <p class=""> {{blog.headline}}</p>
+
+    <p class=""> {{blog.content}}</p>
+
+    <p class=""> {{blog.reporter}}</p>
+
+    <p class=""> {{blog.category}} </p>
+
+    {% endfor %}
+    
+</div>
+
+
+{% endblock %}
