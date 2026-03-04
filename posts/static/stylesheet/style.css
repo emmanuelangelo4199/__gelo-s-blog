@@ -9,6 +9,7 @@
     --text-white: white;
     --border-btm: rgba(255, 255, 255, 0.05);
     --bg-nav: #A1C084; 
+    --clr05: #eff5ad;
     --clr1: #ECF39E;
     --clr2: #90A955;
     --clr3: #4F772D;
@@ -140,3 +141,32 @@ body.bg{
     justify-content: space-between;
     margin-bottom: 16px;
 } 
+
+.article{
+    display: flex;
+    border-bottom: 1px solid var(--clr05);
+    gap: 24px;
+    margin: 32px 0;
+    padding-bottom: 24px;
+}
+
+.article .article-image{
+    flex: 0 0 180px;
+    background-color: var(--clr1);
+    max-height: 150px;
+}
+
+.article .article-date{
+    color: var(--clr2);
+    margin-bottom: 8px;
+}
+
+a.btn{
+    border: 1px solid var(--clr1);
+    color: var(--text-white);
+}
+
+a.btn:hover{
+    background: var(--clr1);
+    
+}

@@ -12,22 +12,40 @@
             
         </div>
 
+        {% if blogscount == 0%}
+            <p> There are no Blog Post yet.</p>
 
-        <div class="">
-            {% for blog  in blogsP reversed %}
-                <p class=""> {{blog.headline}}</p>
+            {% else %}
 
-                <p class=""> {{blog.content}}</p>
+                <div class="">
+                    {% for blog  in blogsP reversed %}
+                        <div class="article">
+                            <div class="article-image">
 
-                <p class=""> {{blog.published_date}}</p>
+                            </div>
 
-                <p class=""> {{blog.reporter}}</p>
+                            <div class="article-content">
+                                <h2> {{blog.headline}} </h2>
+                                <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+                                <p class=""> {{blog.content|truncatechars:200}}</p>
 
-                <p class=""> {{blog.category}} </p>
+                                <p class="">Uploaded by: {{blog.reporter}}</p>
+                                <p class="">Category of content: {{blog.category}} </p>
 
-            {% endfor %}
-        
-        </div>
+
+                                <div class="article-buttons">
+                                    <a class="btn" href="{% url 'edit' blog.id %}">Edit</a>
+                                    <a></a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    {% endfor %}
+            
+            </div>
+        {% endif %}
 
     </div>
 
