@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import *
 from .models import *
@@ -64,3 +64,17 @@ def edit (request, pk):
     
     context = {'form': form}
     return render(request, 'posts/edit.html', context)
+
+def delete (request, id):
+    # Retrieve the object or raise a 404 error if it doesn't exist
+    blog = get_object_or_404(Articles,id=id)
+    
+    if request.method == "POST":
+        # If the request is POST, delete the object
+        blog.delete()
+        return redirect('index')
+    
+    # If it's a not POST a GET request to show the confirmation page 
+    # render a template asking for confirmation
+    context = {'blog': blog}
+    return render(request, 'posts/delete.html', context)
