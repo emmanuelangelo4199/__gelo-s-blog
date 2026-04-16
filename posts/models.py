@@ -32,7 +32,7 @@ class Articles(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     reporter = models.TextField()
     category = models.TextField()
-    featured_Image = models.ImageField(upload_to='articles/featured_images/', blank=True, null=True)
+    featured_Image = models.ImageField(upload_to='image/', blank=True, null=True)
     
     def __str__(self):
         return self.headline
@@ -40,7 +40,7 @@ class Articles(models.Model):
     
 class Image(models.Model):
     article = models.ForeignKey(Articles, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='article/images/')
+    image = models.ImageField(upload_to='image/')
     
     def __str__(self):
         return f"Image for {self.article.headline}"

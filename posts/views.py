@@ -30,18 +30,20 @@ def create_P(request):
     form = BlogForm()
     
     if request.method == "POST":
-        form = BlogForm(request.POST)
+        form = BlogForm(request.POST, request.FILES)
         if form.is_valid():
             headline = form.cleaned_data['headline']
             content = form.cleaned_data['content'] 
             reporter = form.cleaned_data['reporter']
             category = form.cleaned_data['category']
+            image = form.cleaned_data['image']
             
             blog = Articles(
                 headline = headline, 
                 content = content,
                 reporter = reporter,
                 category = category,
+                featured_Image = image
             )
             blog.save()
             return redirect('index')
@@ -57,7 +59,7 @@ def edit (request, pk):
     
     # this tell that someone is trying to populate data in the database
     if request.method == "POST":
-        form = BlogForm(request.POST, instance=blog)
+        form = BlogForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
             blog.save()
             return redirect('index')

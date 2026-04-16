@@ -142,7 +142,7 @@ body.bg{
     margin-bottom: 16px;
 } 
 
-.article{
+.article, .article-delete{
     display: flex;
     border-bottom: 1px solid var(--clr05);
     gap: 24px;
@@ -150,10 +150,31 @@ body.bg{
     padding-bottom: 24px;
 }
 
-.article .article-image{
+.article-delete{
+    background-color: var(--clr05);
+    border: 1px solid var(--clr2);
+    color: var(--body-color);
+    border-radius: 8px;
+    padding: 13px;
+    height: 60vh;
+}
+
+.article .article-image, .article-image-delete{
     flex: 0 0 180px;
-    background-color: var(--clr1);
+    background-color: var(--clr3);
     max-height: 150px;
+}
+
+.article .article-image img,
+.article-image-delete img{
+    object-fit: cover;
+    width: 180px;
+    height: 150px;
+}
+
+.article-image-delete{
+    width: 180px;
+    height: 90px;
 }
 
 .article .article-date{

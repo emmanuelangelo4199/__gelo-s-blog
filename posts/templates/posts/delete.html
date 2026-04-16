@@ -2,8 +2,7 @@
 
 {% load static %}
 
-{% load crispy_forms_tags %}
-
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
 
 {%block content%}
 
@@ -12,18 +11,37 @@
             <h1 class="title"> Delete a Blogpost </h1>
         </div>
 
-        <form method="post" enctype="multipart/form-data">
+        <div class="article-delete">
+
+            <div class="article-content">
+                <h2> {{blog.headline}} </h2>
+                <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+                <p class=""> {{blog.content|truncatechars:200}}</p>
+
+                <p class="">Uploaded by: {{blog.reporter}}</p>
+                <p class="">Category of content: {{blog.category}} </p>
+
+                <div class="article-image-delete"> 
+                    {% if blog.featured_Image %}
+                        <img src="{{blog.featured_Image.url}}" alt="{{blog.title}}">
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+            <p> Are you sure that you want to delete this post?</p>
+         <form method="post" enctype="multipart/form-data">
             {% comment %} Cross-Site Request Forgery token {% endcomment %}
             {% csrf_token %}
 
             {% comment %} rendering the forms {% endcomment %}
-            {{form|crispy}}
+            {% comment %} {{form|crispy}} {% endcomment %}
 
-            {{ my_formset.blogP }}
+            {% comment %} {{ my_formset.blogP }} {% endcomment %}
 
-            <button type="submit" class="btn btn-primary"> Delete your post</button>
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url "index" %}" class="btn btn-primary">Cancel</a>
         </form>
-
     </div>
 
 

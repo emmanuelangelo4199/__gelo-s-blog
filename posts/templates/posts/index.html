@@ -21,7 +21,9 @@
                     {% for blog  in blogsP reversed %}
                         <div class="article">
                             <div class="article-image">
-
+                                {% if blog.featured_Image %}
+                                <img src="{{blog.featured_Image.url}}" alt="{{blog.title}}">
+                                {% endif %}
                             </div>
 
                             <div class="article-content">

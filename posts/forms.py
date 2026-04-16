@@ -13,7 +13,7 @@ class BlogForm(forms.ModelForm):
     )
     
     content = forms.CharField(
-    label= "content",
+    label= "Content",
     widget=forms.Textarea(attrs={
         'placeholder': 'Write your content here...',
         'rows': 5
@@ -33,6 +33,12 @@ class BlogForm(forms.ModelForm):
         'placeholder': 'Category...'
     })
     )
+    
+    image = forms.ImageField(
+        label = "Upload an image",
+        required = False,
+        widget = forms.ClearableFileInput()
+    )
     # reporter = forms.ModelChoiceField(
     # queryset=Reporter.objects.all(),
     # label="Reporter"
@@ -46,4 +52,4 @@ class BlogForm(forms.ModelForm):
     
     class Meta:
         model = Articles
-        fields = ['headline', 'content', 'reporter', 'category']
+        fields = ['headline', 'content', 'reporter', 'category', 'image']
