@@ -19,8 +19,8 @@ class Reporter(models.Model):
 
 
 class Categories(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField()
+    name = models.CharField(max_length=50, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return self.name
@@ -31,7 +31,7 @@ class Articles(models.Model):
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     reporter = models.TextField()
-    category = models.TextField()
+    category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
     featured_Image = models.ImageField(upload_to='image/', blank=True, null=True)
     
     def __str__(self):

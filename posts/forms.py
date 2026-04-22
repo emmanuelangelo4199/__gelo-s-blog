@@ -27,11 +27,11 @@ class BlogForm(forms.ModelForm):
     })
     )
     
-    category = forms.CharField(
-    label= "Category",
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Category...'
-    })
+    category = forms.ModelChoiceField(
+    queryset= Categories.objects.all(),
+    required= False,
+    label= "Select Category",
+    widget=forms.Select()
     )
     
     image = forms.ImageField(

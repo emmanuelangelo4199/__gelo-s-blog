@@ -32,7 +32,10 @@
                                 <p class=""> {{blog.content|truncatechars:200}}</p>
 
                                 <p class="">Uploaded by: {{blog.reporter}}</p>
-                                <p class="">Category of content: {{blog.category}} </p>
+
+                                {% if blog.category %}
+                                <p class="">Category of content: {{blog.category.name}} </p>
+                                {% endif %}
 
 
                                 <div class="article-buttons">
