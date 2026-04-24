@@ -39,6 +39,13 @@ class BlogForm(forms.ModelForm):
         required = False,
         widget = forms.ClearableFileInput()
     )
+    
+    tags = forms.ModelMultipleChoiceField(
+        queryset= Tag.objects.all(),
+        required = False,
+        label = "Select Tags",
+        widget = forms.SelectMultiple()
+    )
     # reporter = forms.ModelChoiceField(
     # queryset=Reporter.objects.all(),
     # label="Reporter"
@@ -52,4 +59,4 @@ class BlogForm(forms.ModelForm):
     
     class Meta:
         model = Articles
-        fields = ['headline', 'content', 'reporter', 'category', 'image']
+        fields = ['headline', 'content', 'reporter', 'category', 'image', 'tags']

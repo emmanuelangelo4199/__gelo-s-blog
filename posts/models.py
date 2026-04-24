@@ -25,6 +25,15 @@ class Categories(models.Model):
     def __str__(self):
         return self.name
     
+    
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    modified_on = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
+    
 
 class Articles(models.Model):
     headline = models.CharField(max_length=200)
@@ -32,6 +41,7 @@ class Articles(models.Model):
     published_date = models.DateTimeField(auto_now_add=True)
     reporter = models.TextField()
     category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     featured_Image = models.ImageField(upload_to='image/', blank=True, null=True)
     
     def __str__(self):

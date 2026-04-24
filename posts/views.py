@@ -37,15 +37,18 @@ def create_P(request):
             reporter = form.cleaned_data['reporter']
             category = form.cleaned_data['category']
             image = form.cleaned_data['image']
+            tags = form.cleaned_data['tags']
             
             blog = Articles(
                 headline = headline, 
                 content = content,
                 reporter = reporter,
                 category = category,
-                featured_Image = image
+                featured_Image = image,
             )
             blog.save()
+            blog.tags.set(tags)
+            
             return redirect('index')
     
     context = {'form': form}
