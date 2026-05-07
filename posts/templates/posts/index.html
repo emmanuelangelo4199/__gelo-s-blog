@@ -28,13 +28,33 @@
 
                             <div class="article-content">
                                 <h2> {{blog.headline}} </h2>
-                                <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+
+                                <div class="article-dc d-flex align-items-center m-1">
+                                
+                                    <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+                                    
+                                    <i class="fa">.</i>
+
+                                    {% if blog.category %}
+                                    <p class="text-c"> {{blog.category.name}} </p>
+                                    {% endif %}
+
+                                    {% if blog.reporter %}
+                                    <p class="">by {{blog.reporter}}</p>
+                                    {% endif %}
+
+                                </div>
+                                
                                 <p class=""> {{blog.content|truncatechars:200}}</p>
 
-                                <p class="">Uploaded by: {{blog.reporter}}</p>
 
-                                {% if blog.category %}
-                                <p class="">Category of content: {{blog.category.name}} </p>
+                                {% if blog.tags.all %}
+                                <div class="tags">
+                                    {% for tag in blog.tags.all %}
+                                        <span class="article-tag">#{{tag.name}}</span>
+                                    {% endfor %}
+                                </div>
+
                                 {% endif %}
 
 
