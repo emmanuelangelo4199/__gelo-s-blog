@@ -36,7 +36,7 @@ The following models are defined:
 
 ## Technology Stack
 - **Backend**: Django (Python)
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS, JavaScript, BootStraps5
 - **Database**: SQLite (or PostgreSQL for production)
 
 ## Project Structure
