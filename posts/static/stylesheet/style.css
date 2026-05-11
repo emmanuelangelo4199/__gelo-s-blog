@@ -24,7 +24,6 @@ body.bg{
 }
 
 .navbar{
-    position: sticky;
     width: 100%;
     height: 100px;
     margin-bottom: 2rem;
@@ -159,27 +158,47 @@ body.bg{
     height: 60vh;
 }
 
-.article .article-image, .article-image-delete{
+.container .article-details{
+    background-color: var(--bg-nav);
+    border: 1px solid var(--clr2);
+    color: var(--clr05);
+    border-radius: 2px;
+    padding: 13px;
+}
+
+.container .article-details .article-fix{
+    display: flex;
+    gap: 10;
+}
+
+.article .article-image 
+/*,.article-image-delete*/{
     flex: 0 0 180px;
     background-color: var(--clr3);
     max-height: 150px;
 }
 
-.article .article-image img,
-.article-image-delete img{
+.article .article-image img{
     object-fit: cover;
     width: 180px;
     height: 150px;
 }
 
-.article-image-delete{
+.article-image-delete img{
+    object-fit: cover;
     width: 180px;
-    height: 90px;
+    height: 110px;
 }
 
 .article .article-date{
     color: var(--clr2);
     margin-bottom: 8px;
+}
+
+.article-image-details img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .article .text-c{

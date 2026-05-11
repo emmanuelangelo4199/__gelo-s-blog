@@ -21,7 +21,13 @@ def index(request):
     return render(request, 'posts/index.html', context)
 
 def blogPost(request):
-    context = {}
+    blogsP = Articles.objects.all()
+    blogscount = blogsP.count()
+    
+    context = {
+        'blogsP': blogsP,
+        'blogscount': blogscount
+    }
     return render(request, 'posts/blog.html', context)
 
 @csrf_protect
@@ -83,3 +89,11 @@ def delete (request, id):
     # render a template asking for confirmation
     context = {'blog': blog}
     return render(request, 'posts/delete.html', context)
+
+def details(request, pk):
+    blog = Articles.objects.get(id=pk)
+
+
+
+    context = {'blog': blog}
+    return render(request, 'posts/details.html', context)

@@ -1,0 +1,38 @@
+{% extends "posts/base.html" %}
+
+{% load static %}
+
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+
+{%block content%}
+
+    <div class="container">
+        <div class="topbar">
+            <h1 class="title">{{blog.headline}} </h1>
+        </div>
+
+        <div class="article-content">
+            <div class="article-image-details"> 
+                {% if blog.featured_Image %}
+                    <img src="{{blog.featured_Image.url}}" alt="{{blog.title}}">
+                {% endif %}
+            </div>
+
+            <div class="article-details">
+                <div class="article-fix">
+                    <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+
+                    <i class="fa">.</i>
+
+                    {% if blog.category %}
+                    <p class="text-c"> {{blog.category.name}} </p>
+                    {% endif %}
+                </div>
+
+                <p class=""> {{blog.content|linebreaks}}</p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

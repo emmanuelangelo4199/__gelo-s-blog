@@ -36,10 +36,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Application definition
 
 INSTALLED_APPS = [
-    'main',
-    'comments',
     'posts',
-    'users',
     'crispy_forms',
     'crispy_bootstrap4',
     'django.contrib.admin',

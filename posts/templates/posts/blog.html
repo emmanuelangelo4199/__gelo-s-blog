@@ -4,19 +4,75 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="topbar">
-            <h1 class="title"> Welcome to my Blog </h1>
-            <a class="btn btn-primary" href="{% url 'create' %}">Create blog</a>
-        </div>
-
-
-        <div>
-            Space for all your thought
-        </div> 
+<div class="container">
+    <div class="topbar">
+        <h1 class="title"> Welcome to Users Blog </h1>
+        <a class="btn btn-primary" href="{% url 'create' %}">Create blog</a>
     </div>
 
-    
+
+    {% if blogscount == 0%}
+        <p> There are no Blog Post yet.</p>
+
+        {% else %}
+
+            <div class="">
+                {% for blog  in blogsP reversed %}
+                    <div class="article">
+                        <div class="article-image">
+                            {% if blog.featured_Image %}
+                            <img src="{{blog.featured_Image.url}}" alt="{{blog.title}}">
+                            {% endif %}
+                        </div>
+
+                        <div class="article-content">
+                            <h2> {{blog.headline}} </h2>
+
+                            <div class="article-dc d-flex align-items-center m-1">
+                            
+                                <div class="article-date"> {{blog.published_date|date:"D, d M, Y"}}</div>
+                                
+                                <i class="fa">.</i>
+
+                                {% if blog.category %}
+                                <p class="text-c"> {{blog.category.name}} </p>
+                                {% endif %}
+
+                                {% if blog.reporter %}
+                                <p class="">By {{blog.reporter}}</p>
+                                {% endif %}
+
+                            </div>
+                            
+                            <p class=""> {{blog.content|truncatechars:200}}</p>
+
+
+                            {% if blog.tags.all %}
+                            <div class="tags">
+                                {% for tag in blog.tags.all %}
+                                    <span class="article-tag">#{{tag.name}}</span>
+                                {% endfor %}
+                            </div>
+
+                            {% endif %}
+
+
+                            <div class="article-buttons">
+                                <a class="btn" href="{% url 'edit' blog.id %}">Edit</a>
+                                <a class="btn" href="{% url 'delete' blog.id %}">Delete</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+        
+        </div>
+    {% endif %}
+</div>
+
+
 
 
 {% endblock %}
