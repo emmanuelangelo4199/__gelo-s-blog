@@ -235,3 +235,8 @@ a.btn{
 a.btn:hover{
     background: var(--clr1);  
 }
+
+.signup{
+    padding: 20px;
+    color: var(--clr1);
+}
