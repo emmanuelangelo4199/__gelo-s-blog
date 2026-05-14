@@ -39,10 +39,10 @@ class Articles(models.Model):
     headline = models.CharField(max_length=200)
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
-    reporter = models.TextField()
     category = models.ForeignKey(Categories, on_delete=models.SET_NULL, null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     featured_Image = models.ImageField(upload_to='image/', blank=True, null=True)
+    reporter = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.headline

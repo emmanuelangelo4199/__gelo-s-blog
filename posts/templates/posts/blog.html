@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="topbar">
-        <h1 class="title"> Welcome to Users Blog </h1>
+        <h1 class="title"> Welcome to {{user.username}} Blog </h1>
         <a class="btn btn-primary" href="{% url 'create' %}">Create blog</a>
     </div>
 
@@ -38,8 +38,9 @@
                                 <p class="text-c"> {{blog.category.name}} </p>
                                 {% endif %}
 
+                                <i class="fa">.</i>
                                 {% if blog.reporter %}
-                                <p class="">By {{blog.reporter}}</p>
+                                <p class="article-date">By {{blog.reporter}}</p>
                                 {% endif %}
 
                             </div>

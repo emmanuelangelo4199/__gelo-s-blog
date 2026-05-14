@@ -38,13 +38,24 @@
             
             <ul class="nav-links">
                 <li><a href="{% url 'index' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home"></i> Home</a></li>
+
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog'%}active{% endif %}"><i class="fi fi-bs-info"></i> My Blog</a></li>
             </ul>
 
             <div class="nav-signup">
-                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"><i class="fi fi-sr-entrance"></i> Login</a>
-                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"> <i class="fi fi-rr-sign-up"></i> Sign-Up</a>
+                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"> <i class="fi fi-rr-sign-up"></i> Signed as : {{user.username}} </a>
+
+                    <a href="#" class="{% if request.path == '#'%}active{% endif %}">Logout</a>
             </div>
+            {% else %}
+                <li><a href="{% url 'signup' %}" class="{% if request.path == '/signup'%}active{% endif %}"><i class="fi fi-bs-info"></i>Signup</a></li>
+
+                <li><a href="{% url 'login'%}" class="{% if request.path == '/login'%}active{% endif %}"><i class="fi fi-sr-entrance"></i> Login</a></li>
+
+            {% endif %}
+
+
         </nav>
 
         <main class="container-fluid">

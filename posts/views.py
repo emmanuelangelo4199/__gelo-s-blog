@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-
+from django.shortcuts import render, redirect
 from .forms import *
 from .models import *
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -20,8 +20,13 @@ def index(request):
     }
     return render(request, 'posts/index.html', context)
 
+@login_required
 def blogPost(request):
-    blogsP = Articles.objects.all()
+    # shows all blogs created by different users
+    # blogsP = Articles.objects.all().order_by('')
+
+
+    blogsP = Articles.objects.filter(reporter=request.user)
     blogscount = blogsP.count()
     
     context = {
@@ -31,6 +36,7 @@ def blogPost(request):
     return render(request, 'posts/blog.html', context)
 
 @csrf_protect
+@login_required
 def create_P(request):
     # this form is for the create template {{form|crispy}} the one created for forms..
     form = BlogForm()
@@ -60,9 +66,13 @@ def create_P(request):
     context = {'form': form}
     return render(request, 'posts/create.html', context)
 
+@login_required
 def edit (request, pk):
     # this gets the message from directly from the Article model/ database
     blog = Articles.objects.get(id=pk)
+
+    if request.user != blog.reporter:
+        return redirect('index')
     
     form = BlogForm(instance=blog)
     
@@ -70,15 +80,19 @@ def edit (request, pk):
     if request.method == "POST":
         form = BlogForm(request.POST, request.FILES, instance=blog)
         if form.is_valid():
-            blog.save()
+            form.save()
             return redirect('index')
     
     context = {'form': form}
     return render(request, 'posts/edit.html', context)
 
+@login_required
 def delete (request, id):
     # Retrieve the object or raise a 404 error if it doesn't exist
-    blog = get_object_or_404(Articles,id=id)
+    blog = Articles.objects.get(id=id)
+
+    if request.user != blog.reporter:
+        return redirect('index')
     
     if request.method == "POST":
         # If the request is POST, delete the object

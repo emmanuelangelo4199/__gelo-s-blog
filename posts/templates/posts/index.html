@@ -8,7 +8,7 @@
 
     <div class="container">
         <div class="topbar">
-            <h1 class="title"> Welcome to our Blog </h1>
+            <h1 class="title"> Welcome to Gelo Blogs </h1>
             
         </div>
 
@@ -39,10 +39,8 @@
                                     <p class="text-c"> {{blog.category.name}} </p>
                                     {% endif %}
 
-                                    {% if blog.reporter %}
-                                    <p class="">By {{blog.reporter}}</p>
-                                    {% endif %}
-
+                                    <i class="fa">.</i>
+                                    <div class="article-date">by {{blog.reporter.username}}</div>
                                 </div>
                                 
                                 <p class=""> {{blog.content|truncatechars:200}}</p>

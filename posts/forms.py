@@ -20,13 +20,7 @@ class BlogForm(forms.ModelForm):
     })
     )
     
-    reporter = forms.CharField(
-    label= "Reporter's name",
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Reporter...'
-    })
-    )
-    
+
     category = forms.ModelChoiceField(
     queryset= Categories.objects.all(),
     required= False,
