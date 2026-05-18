@@ -46,7 +46,7 @@
             <div class="nav-signup">
                     <a href="#" class="{% if request.path == '#'%}active{% endif %}"> <i class="fi fi-rr-sign-up"></i> Signed as : {{user.username}} </a>
 
-                    <a href="#" class="{% if request.path == '#'%}active{% endif %}">Logout</a>
+                    <a href="{% url 'logoutc' %}" class="{% if request.path == '/logoutc'%}active{% endif %}">Logout</a>
             </div>
             {% else %}
                 <li><a href="{% url 'signup' %}" class="{% if request.path == '/signup'%}active{% endif %}"><i class="fi fi-bs-info"></i>Signup</a></li>
