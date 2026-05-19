@@ -37,21 +37,21 @@
             </div>
             
             <ul class="nav-links">
-                <li><a href="{% url 'index' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home"></i> Home</a></li>
+                <li><a href="{% url 'index' %}" class="{% if request.path == '/'%}active{% endif %}"><i class="fi fi-rr-home">Home</i></a></li>
 
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog'%}active{% endif %}"><i class="fi fi-bs-info"></i> My Blog</a></li>
+                <li><a href="{% url 'blog' %}" class="{% if request.path == '/blog'%}active{% endif %}"><i class="fi fi-bs-info"></i>Create Blog</a></li>
             </ul>
 
             <div class="nav-signup">
-                    <a href="#" class="{% if request.path == '#'%}active{% endif %}"> <i class="fi fi-rr-sign-up"></i> Signed as : {{user.username}} </a>
+                    <a href="{% url 'userbio' %}" class="{% if request.path == '/users/userbio'%}active{% endif %}">{{user.username}} </a>
 
-                    <a href="{% url 'logoutc' %}" class="{% if request.path == '/logoutc'%}active{% endif %}">Logout</a>
+                    <a href="{% url 'logoutc' %}" class="{% if request.path == '/users/logoutc'%}active{% endif %}">Logout</a>
             </div>
             {% else %}
-                <li><a href="{% url 'signup' %}" class="{% if request.path == '/signup'%}active{% endif %}"><i class="fi fi-bs-info"></i>Signup</a></li>
+                <li><a href="{% url 'signup' %}" class="{% if request.path == '/users/signup'%}active{% endif %}"><i class="fi fi-rr-sign-up">Signup</i></a></li>
 
-                <li><a href="{% url 'login'%}" class="{% if request.path == '/login'%}active{% endif %}"><i class="fi fi-sr-entrance"></i> Login</a></li>
+                <li><a href="{% url 'login'%}" class="{% if request.path == '/users/login'%}active{% endif %}"><i class="fi fi-sr-entrance">Login</i></a></li>
 
             {% endif %}
 
