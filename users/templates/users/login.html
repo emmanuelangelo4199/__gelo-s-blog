@@ -12,7 +12,14 @@
         <form method="post" class="signup" enctype="multipart/form-data">
             {% csrf_token %}
             {{form|crispy}}
-            <button type="submit" class="btn btn-primary" type="submit">Login</button>
+
+            <div class="d-flex p-2 align-items-center gap-10">
+
+            <button type="submit" class="btn btn-primary mr-2" type="submit">Login</button>
+            <a href="{% url 'password_reset' %}" 
+            class="text-white text-decoration-none ml-2 {% if request.path == '/users/password_reset'%}active{% endif %}">Forgot password</a>
+
+            </div>
         </form>
 
     </div>
