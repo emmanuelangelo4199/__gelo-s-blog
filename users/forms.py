@@ -21,46 +21,37 @@ class CustomUserCreationForm(UserCreationForm):
 
 class User_update_forms(forms.ModelForm):
     first_name = forms.CharField(
-    label= "First Name:", 
-    max_length= 50,
-    required=False,
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Enter first name'
-    })
+        label="First Name:",
+        max_length=50,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Enter first name'})
     )
 
     last_name = forms.CharField(
-    label= "Last Name:", 
-    max_length= 50,
-    required=False,
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Enter last name'
-    })
-    )
-
-    email = forms.EmailField(
-        label= "Email",
-        max_length= 100,
-        required= True,
-        widget=forms.TextInput(attrs={
-        'placeholder': 'Enter  email'
-    })
+        label="Last Name:",
+        max_length=50,
+        required=False,
+        widget=forms.TextInput(attrs={'placeholder': 'Enter last name'})
     )
 
     username = forms.CharField(
-    label= "Username:", 
-    max_length= 50,
-    widget=forms.TextInput(attrs={
-        'placeholder': 'Enter  username'
-    })
+        label="Username:",
+        max_length=50,
+        widget=forms.TextInput(attrs={'placeholder': 'Enter username'})
+    )
+
+    email = forms.EmailField(
+        label="Email:",
+        required=True,
+        widget=forms.EmailInput(attrs={'placeholder': 'Enter email'})
     )
 
     image = forms.ImageField(
-        label = "Upload an image",
-        required = False,
-        widget = forms.ClearableFileInput()
+        label="Upload an image",
+        required=False,
+        widget=forms.ClearableFileInput()
     )
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'username', 'image']
+        fields = ['first_name', 'last_name', 'username', 'email', 'image']
