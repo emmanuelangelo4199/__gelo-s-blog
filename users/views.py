@@ -2,16 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
 
-from .forms import User_update_forms
+from .forms import *
 
 def signup(request):
     form = UserCreationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UserCreationForm,CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
+        else:
+            form = CustomUserCreationForm()
 
     context = {'form':form}
     return render(request, 'users/signup.html', context)
