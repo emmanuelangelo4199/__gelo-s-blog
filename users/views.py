@@ -5,15 +5,13 @@ from django.contrib.auth import logout
 from .forms import *
 
 def signup(request):
-    form = UserCreationForm()
+    form = CustomUserCreationForm()
 
     if request.method == 'POST':
-        form = UserCreationForm,CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
-        else:
-            form = CustomUserCreationForm()
 
     context = {'form':form}
     return render(request, 'users/signup.html', context)
