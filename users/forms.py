@@ -38,6 +38,15 @@ class User_update_forms(forms.ModelForm):
     })
     )
 
+    email = forms.EmailField(
+        label= "Email",
+        max_length= 100,
+        required= True,
+        widget=forms.TextInput(attrs={
+        'placeholder': 'Enter  email'
+    })
+    )
+
     username = forms.CharField(
     label= "Username:", 
     max_length= 50,
@@ -54,4 +63,4 @@ class User_update_forms(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'image']
+        fields = ['first_name', 'last_name', 'email', 'username', 'image']
