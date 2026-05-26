@@ -23,12 +23,37 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vz7)3p10+g$+kik-obq(56ht!a7k+_e#zr9mn45^+9p#b4xfd#'
+# For deployment, set SECRET_KEY and DEBUG via environment variables.
+SECRET_KEY = config(
+    "SECRET_KEY",
+    default="django-insecure-CHANGE-ME-IN-ENV",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG", default=True, cast=bool)
 
-ALLOWED_HOSTS = ['gelos-blog.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    default="gelos-blog.onrender.com,localhost,127.0.0.1",
+    cast=lambda v: [h.strip() for h in v.split(",") if h.strip()],
+)
+
+# Production security settings
+# These are enabled automatically when DEBUG=False.
+if not DEBUG:
+    SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=True, cast=bool)
+    SESSION_COOKIE_SECURE = config("SESSION_COOKIE_SECURE", default=True, cast=bool)
+    CSRF_COOKIE_SECURE = config("CSRF_COOKIE_SECURE", default=True, cast=bool)
+
+    # Render (and most PaaS) terminate TLS at a proxy/load balancer.
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+    # HSTS: start with a conservative default; increase once verified.
+    SECURE_HSTS_SECONDS = config("SECURE_HSTS_SECONDS", default=3600, cast=int)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = config(
+        "SECURE_HSTS_INCLUDE_SUBDOMAINS", default=False, cast=bool
+    )
+    SECURE_HSTS_PRELOAD = config("SECURE_HSTS_PRELOAD", default=False, cast=bool)
 
 # Media files (Images)
 MEDIA_URL = '/media/'
@@ -134,14 +159,38 @@ USE_I18N = True
 USE_TZ = True
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "Gelo's blog"
 EMAIL_HOST_USER = config('E_EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('E_EMAIL_HOST_PASSWORD', default='')  
-PASSWORD_RESET_TIMEOUT = 120
+EMAIL_HOST_PASSWORD = config('E_EMAIL_HOST_PASSWORD', default='')
+if EMAIL_HOST_USER:
+    DEFAULT_FROM_EMAIL = config(
+        'DEFAULT_FROM_EMAIL',
+        default=f"Gelo's Blog <{EMAIL_HOST_USER}>",
+    )
+else:
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
+PASSWORD_RESET_TIMEOUT = config('PASSWORD_RESET_TIMEOUT', default=3600, cast=int)
+
+if DEBUG and not EMAIL_HOST_USER:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {'class': 'logging.StreamHandler'},
+    },
+    'loggers': {
+        'django.contrib.auth': {
+            'handlers': ['console'],
+            'level': 'WARNING',
+        },
+    },
+}
 
 
 # Static files (CSS, JavaScript, Images)
