@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Reporter, Categories, Articles, Image, Video, Tag, Comments
 
 # Register your models here.
 
