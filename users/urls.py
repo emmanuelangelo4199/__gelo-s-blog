@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from .forms import PasswordResetForm
-from .views import *
+from .views import signup, logoutc, user_bio
 
 urlpatterns = [
     path('signup', signup, name='signup'),
