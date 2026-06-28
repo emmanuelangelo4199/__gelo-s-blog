@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import *
-from .models import *
+from .forms import BlogForm
+from .models import Articles
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.decorators import login_required
 
